@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Zn3daoGgfonazZxBivC2OoWzEpYih+kDpapzsK5PN7c=",
+  "Source": "EVmanager.Api",
+  "BasePath": "_content/EVmanager.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

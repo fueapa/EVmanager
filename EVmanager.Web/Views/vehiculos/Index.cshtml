@@ -1,0 +1,28 @@
+﻿@model IEnumerable<EVManager.Domain.Vehiculo>
+
+<h2>Vehículos</h2>
+<p><a asp-action="Create" class="btn btn-primary">Crear nuevo</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Placa</th>
+            <th>Modelo</th>
+            <th>Nivel Batería (%)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Placa</td>
+                <td>@item.Modelo</td>
+                <td>@item.NivelBateria</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
