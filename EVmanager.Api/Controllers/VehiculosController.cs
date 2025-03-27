@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using EVManager.Application;
 using EVManager.Domain;
+using EVManager.Application;
+using EVManager.Api.Dtos;
 
 namespace EVManager.Api.Controllers
 {
@@ -15,41 +16,76 @@ namespace EVManager.Api.Controllers
             _vehiculoService = vehiculoService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [HttpGet("all")]
+        public async Task<ActionResult<IEnumerable<Vehiculo>>> GetAllVehicles()
         {
             var vehiculos = await _vehiculoService.GetAllAsync();
             return Ok(vehiculos);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<ActionResult<Vehiculo>> GetVehicleById(int id)
         {
             var vehiculo = await _vehiculoService.GetByIdAsync(id);
-            if (vehiculo == null) return NotFound();
+            if (vehiculo == null)
+            {
+                return NotFound();
+            }
             return Ok(vehiculo);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Vehiculo vehiculo)
+        [HttpPost("{create}")]
+        public async Task<OperationResultDto> Create([FromBody] CreateVehiculoDto dto)
         {
+            if (!ModelState.IsValid)
+            {
+                return new OperationResultDto(false, "Datos inválidos");
+            }
+
+            var vehiculo = new Vehiculo
+            {
+                Placa = dto.Placa,
+                Modelo = dto.Modelo,
+                NivelBateria = dto.NivelBateria,
+                EstaCargando = dto.EstaCargando
+            };
+
             await _vehiculoService.CreateAsync(vehiculo);
-            return CreatedAtAction(nameof(GetById), new { id = vehiculo.Id }, vehiculo);
+            return new OperationResultDto(true, "Vehículo creado correctamente");
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Vehiculo vehiculo)
+        [HttpPut("{update}")]
+        public async Task<OperationResultDto> Update(int id, [FromBody] UpdateVehiculoDto dto)
         {
-            if (id != vehiculo.Id) return BadRequest();
-            await _vehiculoService.UpdateAsync(vehiculo);
-            return NoContent();
+            if (!ModelState.IsValid)
+            {
+                return new OperationResultDto(false, "Datos inválidos");
+            }
+
+            var existingVehiculo = await _vehiculoService.GetByIdAsync(id);
+            if (existingVehiculo == null)
+            {
+                return new OperationResultDto(false, "Vehículo no encontrado");
+            }
+
+            existingVehiculo.NivelBateria = dto.NivelBateria;
+            existingVehiculo.EstaCargando = dto.EstaCargando;
+
+            await _vehiculoService.UpdateAsync(existingVehiculo);
+            return new OperationResultDto(true, "Vehículo actualizado correctamente");
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{delete}")]
+        public async Task<OperationResultDto> Delete(int id)
         {
+            var vehiculo = await _vehiculoService.GetByIdAsync(id);
+            if (vehiculo == null)
+            {
+                return new OperationResultDto(false, "Vehículo no encontrado");
+            }
+
             await _vehiculoService.DeleteAsync(id);
-            return NoContent();
+            return new OperationResultDto(true, "Vehículo eliminado correctamente");
         }
     }
 }

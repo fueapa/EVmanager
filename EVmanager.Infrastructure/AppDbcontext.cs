@@ -1,14 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
-using EVManager.Domain;
+﻿using EVManager.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace EVManager.Infrastructure
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-        
+        public DbSet<PuntoCarga> PuntosCarga { get; set; }
+        public DbSet<Vehiculo> Vehiculos { get; set; }
 
-        public DbSet<Vehiculo> Vehiculos { get; set; }    
-        public DbSet<PuntoCarga> PuntosCarga { get; set; } 
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {
+        }
     }
 }
