@@ -2,7 +2,7 @@
   {
     "ContainingType": "EVManager.Api.Controllers.PuntosCargaController",
     "Method": "Create",
-    "RelativePath": "api/PuntosCarga/{create}",
+    "RelativePath": "api/PuntosCarga",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -10,42 +10,6 @@
       {
         "Name": "dto",
         "Type": "EVManager.Api.Dtos.CreatePuntoCargaDto",
-        "IsRequired": true
-      },
-      {
-        "Name": "create",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "EVManager.Api.Dtos.OperationResultDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "EVManager.Api.Controllers.PuntosCargaController",
-    "Method": "Delete",
-    "RelativePath": "api/PuntosCarga/{delete}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "delete",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -90,7 +54,7 @@
   {
     "ContainingType": "EVManager.Api.Controllers.PuntosCargaController",
     "Method": "Update",
-    "RelativePath": "api/PuntosCarga/{update}",
+    "RelativePath": "api/PuntosCarga/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -98,16 +62,37 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "dto",
         "Type": "EVManager.Api.Dtos.UpdatePuntoCargaDto",
         "IsRequired": true
-      },
+      }
+    ],
+    "ReturnTypes": [
       {
-        "Name": "update",
-        "Type": "",
+        "Type": "EVManager.Api.Dtos.OperationResultDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EVManager.Api.Controllers.PuntosCargaController",
+    "Method": "Delete",
+    "RelativePath": "api/PuntosCarga/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -146,7 +131,7 @@
   {
     "ContainingType": "EVManager.Api.Controllers.VehiculosController",
     "Method": "Create",
-    "RelativePath": "api/Vehiculos/{create}",
+    "RelativePath": "api/Vehiculos",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -155,47 +140,11 @@
         "Name": "dto",
         "Type": "EVManager.Api.Dtos.CreateVehiculoDto",
         "IsRequired": true
-      },
-      {
-        "Name": "create",
-        "Type": "",
-        "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "EVManager.Api.Dtos.OperationResultDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "EVManager.Api.Controllers.VehiculosController",
-    "Method": "Delete",
-    "RelativePath": "api/Vehiculos/{delete}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "delete",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "EVManager.Api.Dtos.OperationResultDto",
+        "Type": "EVManager.Domain.Vehiculo",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -234,7 +183,7 @@
   {
     "ContainingType": "EVManager.Api.Controllers.VehiculosController",
     "Method": "Update",
-    "RelativePath": "api/Vehiculos/{update}",
+    "RelativePath": "api/Vehiculos/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -242,16 +191,37 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "dto",
         "Type": "EVManager.Api.Dtos.UpdateVehiculoDto",
         "IsRequired": true
-      },
+      }
+    ],
+    "ReturnTypes": [
       {
-        "Name": "update",
-        "Type": "",
+        "Type": "EVManager.Api.Dtos.OperationResultDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EVManager.Api.Controllers.VehiculosController",
+    "Method": "Delete",
+    "RelativePath": "api/Vehiculos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

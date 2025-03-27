@@ -1,28 +1,64 @@
-﻿@model IEnumerable<EVManager.Domain.Vehiculo>
+﻿@model List<EVManager.Domain.Vehiculo>
 
-<h2>Vehículos</h2>
-<p><a asp-action="Create" class="btn btn-primary">Crear nuevo</a></p>
+<h2>Lista de Vehículos</h2>
 <table class="table">
     <thead>
         <tr>
             <th>Placa</th>
             <th>Modelo</th>
-            <th>Nivel Batería (%)</th>
+            <th>Nivel de Batería</th>
             <th>Acciones</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Placa</td>
-                <td>@item.Modelo</td>
-                <td>@item.NivelBateria</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                </td>
-            </tr>
-        }
+    <tbody id="vehiculosTable">
+
     </tbody>
 </table>
+
+<a href="/Vehiculos/Create" class="btn btn-primary">Agregar Nuevo</a>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "https://localhost:7252/api/vehiculos",
+            type: "GET",
+            success: function (data) {
+                var tableContent = "";
+                $.each(data, function (index, vehiculo) {
+                    tableContent += "<tr>";
+                    tableContent += "<td>" + vehiculo.placa + "</td>";
+                    tableContent += "<td>" + vehiculo.modelo + "</td>";
+                    tableContent += "<td>" + vehiculo.nivelBateria + "%</td>";
+                    tableContent += "<td>";
+                    tableContent += `<a href="/Vehiculos/Edit?id=${vehiculo.id}" class="btn btn-warning">Editar</a> `;
+                    tableContent += `<a href="/Vehiculos/Details?id=${vehiculo.id}" class="btn btn-info">Detalles</a> `;
+                    tableContent += `<button class="btn btn-danger btnEliminar" data-id="${vehiculo.id}">Eliminar</button>`;
+                    tableContent += "</td>";
+                    tableContent += "</tr>";
+                });
+                $("#vehiculosTable").html(tableContent);
+            },
+            error: function () {
+                alert("Error al cargar los vehículos.");
+            }
+        });
+
+        $(document).on("click", ".btnEliminar", function () {
+            var id = $(this).data("id");
+            if (confirm("¿Seguro que deseas eliminar este vehículo?")) {
+                $.ajax({
+                    url: "https://localhost:7252/api/vehiculos/" + id,
+                    type: "DELETE",
+                    success: function () {
+                        alert("Vehículo eliminado correctamente.");
+                        location.reload();
+                    },
+                    error: function () {
+                        alert("Error al eliminar el vehículo.");
+                    }
+                });
+            }
+        });
+    });
+</script>

@@ -1,25 +1,47 @@
-﻿@model EVManager.Domain.Vehiculo
-
-<h2>Editar Vehículo</h2>
-<form asp-action="Edit" method="post">
-    <input type="hidden" asp-for="Id" />
+﻿<h2>Editar Vehículo</h2>
+<form id="editForm">
+    <input type="hidden" id="VehiculoId" />
     <div class="form-group">
-        <label asp-for="Placa" class="control-label"></label>
-        <input asp-for="Placa" class="form-control" />
-        <span asp-validation-for="Placa" class="text-danger"></span>
+        <label for="Placa">Placa</label>
+        <input id="Placa" class="form-control" required />
     </div>
     <div class="form-group">
-        <label asp-for="Modelo" class="control-label"></label>
-        <input asp-for="Modelo" class="form-control" />
-        <span asp-validation-for="Modelo" class="text-danger"></span>
+        <label for="Modelo">Modelo</label>
+        <input id="Modelo" class="form-control" required />
     </div>
     <div class="form-group">
-        <label asp-for="NivelBateria" class="control-label"></label>
-        <input asp-for="NivelBateria" class="form-control" />
-        <span asp-validation-for="NivelBateria" class="text-danger"></span>
+        <label for="NivelBateria">Nivel de Batería</label>
+        <input id="NivelBateria" type="number" class="form-control" required />
     </div>
-    <div class="form-group">
-        <input type="submit" value="Guardar" class="btn btn-primary" />
-    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
 </form>
-<a asp-action="Index">Volver</a>
+
+<script>
+    async function loadVehiculo(id) {
+        const response = await fetch(`https://localhost:7252/api/Vehiculos/${id}`);
+        const vehiculo = await response.json();
+        document.getElementById("VehiculoId").value = vehiculo.id;
+        document.getElementById("Placa").value = vehiculo.placa;
+        document.getElementById("Modelo").value = vehiculo.modelo;
+        document.getElementById("NivelBateria").value = vehiculo.nivelBateria;
+    }
+
+    document.getElementById("editForm").addEventListener("submit", async function (event) {
+        event.preventDefault();
+        const id = document.getElementById("VehiculoId").value;
+        const vehiculo = {
+            NivelBateria: document.getElementById("NivelBateria").value,
+        };
+        const response = await fetch(`https://localhost:7252/api/Vehiculos/update/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(vehiculo)
+        });
+        if (response.ok) {
+            alert("Vehículo actualizado correctamente.");
+            window.location.href = "/Vehiculos/Index";
+        } else {
+            alert("Error al actualizar el vehículo.");
+        }
+    });
+</script>

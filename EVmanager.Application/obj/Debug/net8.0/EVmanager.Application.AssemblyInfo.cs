@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EVmanager.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+434628abad722ca6d68e28e85bea474e3e25263d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+335bb040eb47984288e91c01d28be173c4f268e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("EVmanager.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EVmanager.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

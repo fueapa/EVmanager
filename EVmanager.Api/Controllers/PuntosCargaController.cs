@@ -2,6 +2,8 @@
 using EVManager.Domain;
 using EVManager.Application;
 using EVManager.Api.Dtos;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EVManager.Api.Controllers
 {
@@ -34,12 +36,12 @@ namespace EVManager.Api.Controllers
             return Ok(puntoCarga);
         }
 
-        [HttpPost("{create}") ]
+        [HttpPost]
         public async Task<OperationResultDto> Create([FromBody] CreatePuntoCargaDto dto)
         {
             if (!ModelState.IsValid)
             {
-                return new OperationResultDto(false, "Datos invalidos");
+                return new OperationResultDto(false, "Datos inválidos");
             }
 
             var puntoCarga = new PuntoCarga
@@ -53,7 +55,7 @@ namespace EVManager.Api.Controllers
             return new OperationResultDto(true, "Punto de carga creado correctamente");
         }
 
-        [HttpPut("{update}")]
+        [HttpPut("{id}")]
         public async Task<OperationResultDto> Update(int id, [FromBody] UpdatePuntoCargaDto dto)
         {
             if (!ModelState.IsValid)
@@ -74,7 +76,7 @@ namespace EVManager.Api.Controllers
             return new OperationResultDto(true, "Punto de carga actualizado correctamente");
         }
 
-        [HttpDelete("{delete}")]
+        [HttpDelete("{id}")]
         public async Task<OperationResultDto> Delete(int id)
         {
             var puntoCarga = await _puntoCargaService.GetByIdAsync(id);

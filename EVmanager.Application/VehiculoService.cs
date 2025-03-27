@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using EVManager.Domain;
 using EVManager.Infrastructure;
+using EVManager.Infrastructure.Repositories; 
 
 namespace EVManager.Application
 {

@@ -286,3 +286,12 @@ C:\Users\El apa\Desktop\EVmanager\EVmanager.Api\obj\Debug\net8.0\refint\EVmanage
 C:\Users\El apa\Desktop\EVmanager\EVmanager.Api\obj\Debug\net8.0\EVmanager.Api.pdb
 C:\Users\El apa\Desktop\EVmanager\EVmanager.Api\obj\Debug\net8.0\EVmanager.Api.genruntimeconfig.cache
 C:\Users\El apa\Desktop\EVmanager\EVmanager.Api\obj\Debug\net8.0\ref\EVmanager.Api.dll
+C:\Users\El apa\source\repos\EVmanager\EVmanager.Api\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\El apa\source\repos\EVmanager\EVmanager.Api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\El apa\source\repos\EVmanager\EVmanager.Api\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\El apa\source\repos\EVmanager\EVmanager.Api\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\El apa\source\repos\EVmanager\EVmanager.Api\bin\Debug\net8.0\System.IO.Pipelines.dll
+C:\Users\El apa\source\repos\EVmanager\EVmanager.Api\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+C:\Users\El apa\source\repos\EVmanager\EVmanager.Api\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\El apa\source\repos\EVmanager\EVmanager.Api\bin\Debug\net8.0\runtimes\linux-musl-s390x\native\libe_sqlite3.so
+C:\Users\El apa\source\repos\EVmanager\EVmanager.Api\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll

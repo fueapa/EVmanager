@@ -312,3 +312,4 @@ C:\Users\El apa\source\repos\EVmanager\EVmanager.Web\obj\Debug\net8.0\refint\EVm
 C:\Users\El apa\source\repos\EVmanager\EVmanager.Web\obj\Debug\net8.0\EVmanager.Web.pdb
 C:\Users\El apa\source\repos\EVmanager\EVmanager.Web\obj\Debug\net8.0\EVmanager.Web.genruntimeconfig.cache
 C:\Users\El apa\source\repos\EVmanager\EVmanager.Web\obj\Debug\net8.0\ref\EVmanager.Web.dll
+C:\Users\El apa\source\repos\EVmanager\EVmanager.Web\bin\Debug\net8.0\runtimes\linux-musl-s390x\native\libe_sqlite3.so
